@@ -4,8 +4,8 @@
 <title>MyBlog</title>
 <script type='text/javascript' src='js/jquery-1.8.3.js'></script>
 <script type='text/javascript' src='js/karma.js'></script>
-<link href='css/style.css' rel='stylesheet' type='text/css' />
-<link href='css/karma-cherry.css' rel='stylesheet' type='text/css' />
+<link href='../css/style.css' rel='stylesheet' type='text/css' />
+<link href='../css/karma-cherry.css' rel='stylesheet' type='text/css' />
 <link rel='shortcut icon' href='template-blog.html#'/>
 </head>
 
@@ -22,14 +22,14 @@
 
 
 <!-- ***************** - LOGO - ***************** -->
-<a href='index-jquery-1.html' class='logo'><img src='images/mybloglogo.png' /></a>
+<a href='index-jquery-1.html' class='logo'><img src='../images/mybloglogo.png' /></a>
 <!-- ***************** - END LOGO - ***************** -->
 
 
 <!-- ***************** - Main Navigation - ***************** -->
 <ul id='menu-main-nav'>
-<li><a href='index.html'><span><strong>Home</strong><span class='navi-description'>welcome home</span></span></a></li>
-<li class='current_page_item'><a href='archive.html'><span><strong>Archive</strong><span class='navi-description'>past blog posts</span></span></a></li></ul>
+<li class='current_page_item'><a href='index.html'><span><strong>Home</strong><span class='navi-description'>welcome home</span></span></a></li>
+<li><a href='archive.html'><span><strong>Archive</strong><span class='navi-description'>past blog posts</span></span></a></li></ul>
 <!-- ***************** - END Main Navigation - ***************** -->
 
 
@@ -45,7 +45,7 @@
 <div class='tools'>
 <div class='holder'>
 <div class='frame'>
-<h1>Archive</h1></div><!-- end frame -->
+<h1>Full Post</h1></div><!-- end frame -->
 </div><!-- end holder -->
 </div><!-- end tools -->
 <!-- ***************** - END Title Bar - ***************** -->
@@ -58,14 +58,33 @@
 
 
 <!-- ***************** - START Post - ***************** -->
-<h1>No Posts Yet</h1>
+<div class='blog_wrap'>
+<div class='post_title'>
+<h1>qqqq</h1>
+<p class='posted-by-text'><span>Posted by:</span> qqqq</a></p>
+</div><!-- end post_title -->
+<div class='post_content' >
+<p>qqqqq</p>
+<div class='post_date'><span class='day'>01</span><br /><span class='month'>Jun</span></div><!-- end post_date -->
+<div class='post_comments'><span>0</span></div><!-- end post_comments -->
+</div><!-- end post_content -->
+<div class='post_footer'>
+<div class='post_cats'>
+<p><span>Categories:</span></p>
+</div><!-- end post_cats -->
+<div class='post_tags'>
+<p><span>Tags:</span></p>
+</div><!-- end post_tags -->
+</div><!-- end post_footer -->
+</div><!-- end blog_wrap -->
 <!-- ***************** - END Post - ***************** -->
 
 
 </div><!-- end content -->
 <div id='sidebar' class='sidebar_blog'>
-<!-- ***************** - START Side Archive - ***************** -->
-<!-- ***************** - END Side Archive - ***************** -->
+<div class='sidebar-widget'>
+
+
 <h3>Social Networks</h3>
 <ul class='social_icons'>
 <li><a href='#' class='rss'>rss</a></li>
@@ -81,6 +100,7 @@
 <!-- <li><a href='#' class='email'>Email</a></li> -->
 </ul>
 </div><!-- end sidebar -->
+</div><!-- end main-holder -->
 </div><!-- end main-holder -->
 </div><!-- main-area -->
 
@@ -108,6 +128,7 @@
 <div class='top-footer'><a href='template-blog.html#' class='link-top'>top</a></div>
 <ul>
 <li><a href='index.html'>Home</a></li>
+<li><a href='archive.html'>Archive</a></li>
  </ul>
 </div><!-- end foot_right -->
 </div><!-- end info -->

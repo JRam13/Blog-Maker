@@ -92,12 +92,9 @@ public class IndexHTML extends Page {
 				"<div class='sidebar-widget'>\n\n\n" +
 				
 				"<!-- ***************** - START Side Archive - ***************** -->\n" +
-				"<h3>Archives</h3>\n" +
-				"<ul>\n" +
-				"<li>No Archives</li>\n" +
+				getSideArachive() +
 				"</ul>\n" +
-				"</div>\n\n\n" +
-				
+				"</div>\n\n\n"+
 				"<!-- ***************** - END Side Archive - ***************** -->\n" +
 				"<h3>Social Networks</h3>\n" +
 				"<ul class='social_icons'>\n" +
@@ -128,18 +125,20 @@ public class IndexHTML extends Page {
 					"</div><!-- end blog_wrap -->\n";
 		}
 		else{
-			String allPosts = "";
+			String allPosts = "<h1>Recent Blog Posts</h1>\n <hr /><br />";
 			int topFive = 0;
 			for (Post post : posts) {
 				if(topFive < 3){
 					allPosts += 
 							"<div class='blog_wrap'>\n" +
 							"<div class='post_title'>\n" +
-							"<h1><a href='#'>"+post.getPostTitle()+"</a></h1>\n" +
+							"<h1 style='text-decoration:underline;'>"+post.getPostTitle()+"</h1>\n" +
 							"<p class='posted-by-text'><span>Posted by:</span> "+post.getAuthor()+"</a></p>\n" +
 							"</div><!-- end post_title -->\n" +
 							"<div class='post_content' >\n" +
-							"<p>"+post.getContent()+"</p><a class='ka_button small_button' href='#'><span>Continue Reading -></span></a>\n" +
+							"<p>"+post.getContent()+"</p><a class='ka_button small_button' " +
+									"href='blogs/"+post.getPostTitle()+post.getDate().substring(11, 19)+".html'>" +
+											"<span>Continue Reading -></span></a>\n" +
 							"<div class='post_date'><span class='day'>"+post.getDate().substring(8, 10)+"</span><br /><span class='month'>"+post.getDate().substring(4, 7)+"</span></div><!-- end post_date -->\n" +
 							"<div class='post_comments'><span>0</span></div><!-- end post_comments -->\n" +
 							"</div><!-- end post_content -->\n" +
@@ -156,6 +155,21 @@ public class IndexHTML extends Page {
 				topFive ++;
 			}
 			return allPosts;
+		}
+	}
+	
+	private String getSideArachive() {
+		if(posts == null || posts.size() == 0){
+			return 
+					"<li>No Archive</li>\n";
+		}
+		else{
+			String sideArchive = "<h3>Archive</h3>\n <ul>\n";
+			for (Post post : posts) {
+				sideArchive +=
+						"<li>"+post.getPostTitle()+ " - " + post.getDate().substring(0,10)+"</li>";
+			}
+			return sideArchive;		
 		}
 	}
 

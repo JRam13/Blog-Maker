@@ -38,20 +38,24 @@ public class Post {
 		System.out.println("What is the title of your post?");
 		Scanner scn = new Scanner(System.in);
 		setPostTitle(scn.nextLine());
+		if(this.getPostTitle().isEmpty()) { setPostTitle("(blank)"); }
 		
 		//get author
 		System.out.println("Who is authoring this post?");
 		scn = new Scanner(System.in);
 		setAuthor(scn.nextLine());
+		if(this.getAuthor().isEmpty()) { setAuthor("(blank)"); }
 		
 		//get post content
 		System.out.println("Start typing your post content. \n");
 		setContent(scn.nextLine());
+		if(this.getContent().isEmpty()) { setContent("(no content)"); }
 			
 		//get current Date
 	    Date date = new Date();
 	    String strDate = String.format("%tc", date );
 		setDate(strDate);
+		System.out.println(strDate);
 		
 		//add post to database
 		posts = LocalDB.addToDatabase(this);

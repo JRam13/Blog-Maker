@@ -38,5 +38,6 @@ public class PageFacade {
 		post = new Post();
 		allPosts = post.makePost();
 		newPage.makePage("Index", allPosts);
+		newPage.makePage("Blog", allPosts);
 	}
 }

@@ -12,7 +12,8 @@ import posts.Post;
 //=============================================================================
 
 public abstract class Page {
-	private String css = "css/style.css";
+	protected String css = "css/style.css";
+	protected String cssColor = "css/karma-cherry.css";
 	protected ArrayList<Post> posts;
 	protected String headerHTML;
 	protected String title = "MyBlog";
@@ -32,7 +33,7 @@ public abstract class Page {
 				"<script type='text/javascript' src='js/jquery-1.8.3.js'></script>\n" +
 				"<script type='text/javascript' src='js/karma.js'></script>\n" +
 				"<link href='"+css+"' rel='stylesheet' type='text/css' />\n" +
-				"<link href='css/karma-cherry.css' rel='stylesheet' type='text/css' />\n" +
+				"<link href='"+cssColor+"' rel='stylesheet' type='text/css' />\n" +
 				"<link rel='shortcut icon' href='template-blog.html#'/>\n" +
 				"</head>\n";
 	}
@@ -60,6 +61,7 @@ public abstract class Page {
 				"<div class='top-footer'><a href='template-blog.html#' class='link-top'>top</a></div>\n" +
 				"<ul>\n" +
 				"<li><a href='index.html'>Home</a></li>\n" +
+				"<li><a href='archive.html'>Archive</a></li>\n" +
 				" </ul>\n" +
 				"</div><!-- end foot_right -->\n" +
 				"</div><!-- end info -->\n" +

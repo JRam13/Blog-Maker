@@ -32,6 +32,7 @@ public class LocalDB {
 	}
 
 	private static void getCurrentState() {
+		//this method grabs the current state of the database, before modifying.
 		currentState = new ArrayList<Post>();
 		try {
 			Scanner dbScanner = new Scanner (new File("html/database/database.csv"));
@@ -41,13 +42,9 @@ public class LocalDB {
 				string.useDelimiter(",");
 				Post currentPost = new Post();
 				currentPost.setDate(string.next());
-				System.out.println(currentPost.getDate());
 				currentPost.setPostTitle(string.next());
-				System.out.println(currentPost.getPostTitle());
 				currentPost.setAuthor(string.next());
-				System.out.println(currentPost.getAuthor());
 				currentPost.setContent(string.next());
-				System.out.println(currentPost.getContent());
 				currentState.add(currentPost);
 			}
 		} catch (FileNotFoundException e) {
