@@ -43,7 +43,7 @@ public class PageWriter {
 	//============================================================
 	private void openFile(String fileName) {
 		
-		if (Desktop.isDesktopSupported()) {
+		if (Desktop.isDesktopSupported() && fileName.equals("index.html")) {
 		    try {
 		        File myFile = new File("html/"+fileName);
 		        Desktop.getDesktop().open(myFile);

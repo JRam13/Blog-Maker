@@ -6,30 +6,20 @@ import posts.Post;
 //=================================================
 // == Concrete class implementing the Page Interface 
 // =================================================
-@SuppressWarnings("unused")
-public class IndexHTML implements Page {
-	
+public class IndexHTML extends Page {
 	
 	//============================================================
 	//Class Variables
 	//============================================================
-	//flexible css variable to change styles for future versions (multiple themes)
-	//hardcoded for now
-	private String css = "css/style.css";
-	private Post post;
-	private String title;
-	private String headerHTML;
 	private String bodyHTML;
-	private String footerHTML;
-	private PageWriter fw;
 	private final String fileName = "index.html";
 
 	//============================================================
 	//Constructor
 	//============================================================
 	public IndexHTML(Post newPost, String newTitle) {
-		this.post = newPost;
-		this.title = newTitle;
+		post = newPost;
+		title = newTitle;
 		makeHeader();
 		makeBody();
 		makeFooter();
@@ -39,21 +29,6 @@ public class IndexHTML implements Page {
 	//============================================================
 	//Class Methods
 	//============================================================
-	@Override
-	public void makeHeader() {
-		headerHTML = 
-				"<!DOCTYPE HTML>\n" +
-				"<head>\n" +
-				"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />\n" +
-				"<title>"+title+"</title>\n" +
-				"<script type='text/javascript' src='js/jquery-1.8.3.js'></script>\n" +
-				"<script type='text/javascript' src='js/karma.js'></script>\n" +
-				"<link href='"+css+"' rel='stylesheet' type='text/css' />\n" +
-				"<link href='css/karma-cherry.css' rel='stylesheet' type='text/css' />\n" +
-				"<link rel='shortcut icon' href='template-blog.html#'/>\n" +
-				"</head>\n";
-	}
-
 	@Override
 	public void makeBody() {
 		
@@ -74,7 +49,8 @@ public class IndexHTML implements Page {
 				
 				"<!-- ***************** - Main Navigation - ***************** -->\n" +
 				"<ul id='menu-main-nav'>\n" +
-				"<li class='current_page_item'><a href='#'><span><strong>Home</strong><span class='navi-description'>welcome home</span></span></a></li></ul>\n" +
+				"<li class='current_page_item'><a href='index.html'><span><strong>Home</strong><span class='navi-description'>welcome home</span></span></a></li>\n" +
+				"<li><a href='archive.html'><span><strong>Archive</strong><span class='navi-description'>past blog posts</span></span></a></li></ul>\n" +
 				"<!-- ***************** - END Main Navigation - ***************** -->\n\n\n" +
 				
 				"</div><!-- header-area -->\n" +
@@ -143,56 +119,6 @@ public class IndexHTML implements Page {
 				"</div><!-- end sidebar -->\n" +
 				"</div><!-- end main-holder -->\n" +
 				"</div><!-- main-area -->\n\n\n";
-	}
-
-	@Override
-	public void makeFooter() {
-		footerHTML = 
-				"<!-- ***************** - Top Footer - ***************** -->\n" +
-				"<div id='footer'>\n" +
-				"<div class='footer-area'>\n" +
-				"<div class='footer-wrapper'>\n" +
-				"<div class='footer-holder'>\n\n" +
-				
-				"</div><!-- footer-holder -->\n" +
-				"</div><!-- end footer-wrapper -->\n" +
-				"</div><!-- end footer-area -->\n" +
-				"</div><!-- end footer -->\n" +
-				"<!-- /***************** - END Top Footer Area - ***************** --> \n\n\n" +
-				
-				"<!-- /***************** - Bottom Footer - ***************** -->\n" +
-				"<div id='footer_bottom'>\n" +
-				"<div class='info'>\n" +
-				"<div id='foot_left'><p>Copyright &copy; 2013 "+title+". All rights reserved.</p>\n" +
-				" </div><!-- end foot_left -->\n" +
-				"<div id='foot_right'>\n" +
-				"<div class='top-footer'><a href='template-blog.html#' class='link-top'>top</a></div>\n" +
-				"<ul>\n" +
-				"<li><a href='index.html'>Home</a></li>\n" +
-				" </ul>\n" +
-				"</div><!-- end foot_right -->\n" +
-				"</div><!-- end info -->\n" +
-				"</div><!-- end footer_bottom -->\n" +
-				"<!-- /***************** - END Bottom Footer - ***************** --> \n\n\n" +
-				
-				"</div><!-- end main -->\n" +
-				"</div><!-- end wrapper -->\n" +
-				"<script type='text/javascript' src='js/jquery.cycle.all.min.js'></script>\n" +
-				"<script type='text/javascript' src='js/jquery-1-slider.js'></script>\n" +
-				"<script type='text/javascript' src='js/testimonial-slider.js'></script>\n" +
-				"</body>\n" +
-				"</html>\n";
-	}
-
-	//=============================================================
-	//Getters and Setters for stylesheets. (For future theming use)
-	//=============================================================
-	public String getCss() {
-		return css;
-	}
-
-	public void setCss(String css) {
-		this.css = css;
 	}
 
 }

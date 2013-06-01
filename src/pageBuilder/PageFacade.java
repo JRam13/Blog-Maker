@@ -16,11 +16,11 @@ public class PageFacade {
 	public static void showPageBuildOptions(){
 		
 		while(option != 12){
-			System.out.println("Page Builder: ");
+			System.out.println("Site Builder: ");
 	        System.out.println("--------------------------");
 	        
-	        //create index page
-	        System.out.println("1) Create Home Page");
+	        //create the homepage, blog content page, and archive pages
+	        System.out.println("1) Create All Pages");
 	        System.out.println("12) Exit \n");
 	        
 	        Scanner scn = new Scanner(System.in); 
@@ -33,10 +33,16 @@ public class PageFacade {
 			}
 			
 			if(option == 1){
-				System.out.println("Please enter a title for your Blog. \nThis will be the name of your web site.");
+				System.out.println("Creating Home Page...\n");
+				System.out.println("Please enter a title for your Blog. \nThis will be the name of your web site.\n");
 				scn = new Scanner(System.in);
 				title = scn.nextLine();
 				newPage.makePage("Index", null, title);
+				
+				System.out.println("Creating Blog Content Page...\n");
+				newPage.makePage("Blog", null, title);
+				
+				
 			}
 			else if(option == 12){
 				System.out.println("Goodbye.");
@@ -46,10 +52,6 @@ public class PageFacade {
 				System.err.println("Please select a valid option");
 			}
 		}
-		
-		//create archive page
-		
-		//create content page
 	}
 	
 	public static void showPostOptions(){

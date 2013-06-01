@@ -23,6 +23,9 @@ public class PageFactory {
       if(pageType.equalsIgnoreCase("Index")){
          return new IndexHTML(post, title);
       }
+      else if(pageType.equalsIgnoreCase("Blog")){
+          return new BlogPostHTML(post, title);
+       }
       return null;
    }
    
