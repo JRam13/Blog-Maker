@@ -1,5 +1,7 @@
 package pageBuilder;
 
+import java.util.ArrayList;
+
 import posts.Post;
 
 //=============================================================================
@@ -11,14 +13,14 @@ import posts.Post;
 
 public abstract class Page {
 	private String css = "css/style.css";
-	protected Post post;
+	protected ArrayList<Post> posts;
 	protected String headerHTML;
-	protected String title;
+	protected String title = "MyBlog";
 	protected String footerHTML;
 	protected PageWriter fw;
 	
 	// ===============================================
-	//Create Header and Footers (Same for all pages)
+	// Create Header and Footers (Same for all pages)
 	// ===============================================
 	
 	public void makeHeader() {

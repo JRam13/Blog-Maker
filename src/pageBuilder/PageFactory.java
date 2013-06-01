@@ -1,5 +1,7 @@
 package pageBuilder;
 
+import java.util.ArrayList;
+
 import posts.Post;
 
 //=============================================================================
@@ -16,18 +18,18 @@ import posts.Post;
 public class PageFactory {
 	
    //use makePage method to get object of type Page 
-   public Page makePage(String pageType, Post post, String title){
+   public Page makePage(String pageType, ArrayList<Post> allPosts){
       if(pageType == null){
          return null;
       }		
       if(pageType.equalsIgnoreCase("Index")){
-         return new IndexHTML(post, title);
+         return new IndexHTML(allPosts);
       }
       else if(pageType.equalsIgnoreCase("Blog")){
-          return new BlogPostHTML(post, title);
+          return new BlogPostHTML(allPosts);
        }
       else if(pageType.equalsIgnoreCase("Archive")){
-          return new ArchiveHTML(post, title);
+          return new ArchiveHTML(allPosts);
        }
       return null;
    }

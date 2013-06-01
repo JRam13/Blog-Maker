@@ -1,5 +1,7 @@
 package pageBuilder;
 
+import java.util.ArrayList;
+
 import posts.Post;
 
 //=================================================
@@ -16,9 +18,8 @@ public class BlogPostHTML extends Page {
 	//============================================================
 	//Constructor
 	//============================================================
-	public BlogPostHTML(Post newPost, String newTitle) {
-		post = newPost;
-		title = newTitle;
+	public BlogPostHTML(ArrayList<Post> allPosts) {
+		posts = allPosts;
 		makeHeader();
 		makeBody();
 		makeFooter();

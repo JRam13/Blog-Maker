@@ -1,5 +1,7 @@
 package pageBuilder;
 
+import java.util.ArrayList;
+
 import posts.Post;
 
 //=================================================
@@ -16,9 +18,8 @@ public class ArchiveHTML extends Page {
 	//============================================================
 	//Constructor
 	//============================================================
-	public ArchiveHTML(Post newPost, String newTitle) {
-		post = newPost;
-		title = newTitle;
+	public ArchiveHTML(ArrayList<Post> allPosts) {
+		posts = allPosts;
 		makeHeader();
 		makeBody();
 		makeFooter();

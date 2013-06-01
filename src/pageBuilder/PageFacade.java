@@ -1,6 +1,7 @@
 package pageBuilder;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import posts.Post;
 
 //================================================================
 //UI Page Facade. This helps provide simple interface to a complex 
@@ -11,58 +12,31 @@ import java.util.Scanner;
 public class PageFacade {
 	static PageFactory newPage = new PageFactory();
 	static int option;
-	static String title;
+	static Post post;
+	static ArrayList<Post> allPosts = new ArrayList<Post>();
 	
-	public static void showPageBuildOptions() throws Exception{
+	public static void createAllPages() throws Exception{
+		System.out.print("Creating Home Page");
+	    Thread.sleep(1000);System.out.print(" . ");Thread.sleep(1000);System.out.print(". ");Thread.sleep(1000);System.out.print(". \n\n");Thread.sleep(1000);
+		newPage.makePage("Index", null);
 		
-		while(option != 12){
-			System.out.println("Site Builder: ");
-	        System.out.println("--------------------------");
-	        
-	        //create the homepage and archive pages
-	        System.out.println("1) Create All Pages");
-	        System.out.println("12) Exit \n");
-	        
-	        Scanner scn = new Scanner(System.in); 
-			System.out.println("Choose an option: ");
-			
-			try {
-				option = scn.nextInt();
-			} catch (Exception e) {
-				System.out.println("Please choose a valid option");
-			}
-			
-			if(option == 1){
-				System.out.println("Please enter a title for your Blog. \nThis will be the name of your web site.\n");
-				scn = new Scanner(System.in);
-				title = scn.nextLine();
-				System.out.print("Creating Home Page");
-			    Thread.sleep(1000);System.out.print(" . ");Thread.sleep(1000);System.out.print(". ");Thread.sleep(1000);System.out.print(". \n\n");Thread.sleep(1000);
-				newPage.makePage("Index", null, title);
-				
-				System.out.print("Creating Archive Page");
-				newPage.makePage("Archive", null, title);
-			    Thread.sleep(1000);System.out.print(" . ");Thread.sleep(1000);System.out.print(". ");Thread.sleep(1000);System.out.print(". \n\n");Thread.sleep(1000);
+		System.out.print("Creating Archive Page");
+		newPage.makePage("Archive", null);
+	    Thread.sleep(1000);System.out.print(" . ");Thread.sleep(1000);System.out.print(". ");Thread.sleep(1000);System.out.print(". \n\n");Thread.sleep(1000);
 
-				
-				
-			}
-			else if(option == 12){
-				System.out.println("Goodbye.");
-				System.exit(1);
-			}
-			else{
-				System.err.println("Please select a valid option");
-			}
-		}
+		System.out.println("Site Created. Redirecting to Main Menu.\n");
 	}
-	
-	public static void showPostOptions(){
+
+	public static void addPost() {
+		/*
+		 * First, we create the single post in which the user creates. Then, that post will be transferred into the database
+		 * where the returning object will consist of all the posts that exist on that database. This way, the html page
+		 * can be created by iterating through each post.
+		 */
 		
-		//add Post
-		
-		//edit Post
-		
-		//delete Post
+		//go down the layers and fetch a post object
+		post = new Post();
+		allPosts = post.makePost();
+		newPage.makePage("Index", allPosts);
 	}
 }

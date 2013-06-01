@@ -1,5 +1,7 @@
 package pageBuilder;
 
+import java.util.ArrayList;
+
 import posts.Post;
 
 
@@ -17,9 +19,8 @@ public class IndexHTML extends Page {
 	//============================================================
 	//Constructor
 	//============================================================
-	public IndexHTML(Post newPost, String newTitle) {
-		post = newPost;
-		title = newTitle;
+	public IndexHTML(ArrayList<Post> allPosts) {
+		posts = allPosts;
 		makeHeader();
 		makeBody();
 		makeFooter();
@@ -83,11 +84,7 @@ public class IndexHTML extends Page {
 				"<div id='content' class='content_blog'>\n\n\n" +
 				
 				"<!-- ***************** - START Post - ***************** -->\n" +
-				"<div class='blog_wrap'>\n" +
-				"<div class='post_title'>\n" +
-				"<h1>No Posts Yet</h1>\n" +
-				"</div><!-- end post_footer -->\n" +
-				"</div><!-- end blog_wrap -->\n" +
+				getPosts() +
 				"<!-- ***************** - END Post - ***************** -->\n\n\n" +
 				
 				"</div><!-- end content -->\n" +
@@ -119,6 +116,47 @@ public class IndexHTML extends Page {
 				"</div><!-- end sidebar -->\n" +
 				"</div><!-- end main-holder -->\n" +
 				"</div><!-- main-area -->\n\n\n";
+	}
+
+	private String getPosts() {
+		if(posts == null || posts.size() == 0){
+			return 
+					"<div class='blog_wrap'>\n" +
+					"<div class='post_title'>\n" +
+					"<h1>No Posts Yet</h1>\n" +
+					"</div><!-- end post_footer -->\n" +
+					"</div><!-- end blog_wrap -->\n";
+		}
+		else{
+			String allPosts = "";
+			int topFive = 0;
+			for (Post post : posts) {
+				if(topFive < 3){
+					allPosts += 
+							"<div class='blog_wrap'>\n" +
+							"<div class='post_title'>\n" +
+							"<h1><a href='#'>"+post.getPostTitle()+"</a></h1>\n" +
+							"<p class='posted-by-text'><span>Posted by:</span> "+post.getAuthor()+"</a></p>\n" +
+							"</div><!-- end post_title -->\n" +
+							"<div class='post_content' >\n" +
+							"<p>"+post.getContent()+"</p><a class='ka_button small_button' href='#'><span>Continue Reading -></span></a>\n" +
+							"<div class='post_date'><span class='day'>"+post.getDate().substring(8, 10)+"</span><br /><span class='month'>"+post.getDate().substring(4, 7)+"</span></div><!-- end post_date -->\n" +
+							"<div class='post_comments'><span>0</span></div><!-- end post_comments -->\n" +
+							"</div><!-- end post_content -->\n" +
+							"<div class='post_footer'>\n" +
+							"<div class='post_cats'>\n" +
+							"<p><span>Categories:</span></p>\n" +
+							"</div><!-- end post_cats -->\n" +
+							"<div class='post_tags'>\n" +
+							"<p><span>Tags:</span></p>\n" +
+							"</div><!-- end post_tags -->\n" +
+							"</div><!-- end post_footer -->\n" +
+							"</div><!-- end blog_wrap -->\n";
+				}
+				topFive ++;
+			}
+			return allPosts;
+		}
 	}
 
 }
