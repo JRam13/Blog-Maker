@@ -1,0 +1,19 @@
+/* ie fix */
+.CU3ERslides {
+	position: absolute;
+	*left: 0 !important; /* fix for IE7 */
+}
+.CU3ERthumbs-holder ul li a {
+	position: absolute;
+	left:0;
+	top:0;
+}
+.CU3ERthumbs-holder ul li a img {
+	position: absolute;
+}
+.CU3ERtrans {
+	overflow: hidden !important;
+}
+.CU3ERThumbImage {
+	*left: 0 !important; /* fix for IE7 */
+}

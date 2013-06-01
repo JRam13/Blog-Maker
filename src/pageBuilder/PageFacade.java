@@ -33,7 +33,7 @@ public class PageFacade {
 			}
 			
 			if(option == 1){
-				System.out.println("Please enter a title for your Blog. This will be the name of your web site.");
+				System.out.println("Please enter a title for your Blog. \nThis will be the name of your web site.");
 				scn = new Scanner(System.in);
 				title = scn.nextLine();
 				newPage.makePage("Index", null, title);
