@@ -5,7 +5,6 @@ import java.io.File;
 import pageBuilder.PageFacade;
 
 public class UserInterface {
-	PageFacade pf = new PageFacade();
 	private static boolean siteExists;
 	
 	//============================================================
@@ -18,16 +17,26 @@ public class UserInterface {
 		System.out.println("Welcome To Blog-Maker");
 	    System.out.println("===========================================\n");
 		
-		//check to see if html files exists
+		//check to see if framework html files exists
+	    System.out.println("Checking for pages ...");
 		siteExists = doesSiteExist();
-		System.out.println(siteExists);
 		
-		//if files don't exist, ask user to create pages
+		//if files don't exist, ask user to create site pages
+		if(!siteExists){
+			PageFacade.showPageBuildOptions();
+		}
 		
 		//else show posts option
+		else {
+			PageFacade.showPostOptions();
+		}
 		
 	}
 
+	//============================================================
+	//Class Methods
+	//============================================================
+	
 	private static boolean doesSiteExist() {
 		File f = new File("html/index.html");
 		if(!f.exists()) { return false; }
