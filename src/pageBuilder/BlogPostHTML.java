@@ -29,7 +29,7 @@ public class BlogPostHTML extends Page {
 	//Class Methods
 	//============================================================
 	@Override
-	public void makeBody() {
+	void makeBody() {
 		
 		bodyHTML = "";
 		

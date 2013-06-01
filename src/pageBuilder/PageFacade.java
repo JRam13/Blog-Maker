@@ -13,13 +13,13 @@ public class PageFacade {
 	static int option;
 	static String title;
 	
-	public static void showPageBuildOptions(){
+	public static void showPageBuildOptions() throws Exception{
 		
 		while(option != 12){
 			System.out.println("Site Builder: ");
 	        System.out.println("--------------------------");
 	        
-	        //create the homepage, blog content page, and archive pages
+	        //create the homepage and archive pages
 	        System.out.println("1) Create All Pages");
 	        System.out.println("12) Exit \n");
 	        
@@ -33,14 +33,17 @@ public class PageFacade {
 			}
 			
 			if(option == 1){
-				System.out.println("Creating Home Page...\n");
 				System.out.println("Please enter a title for your Blog. \nThis will be the name of your web site.\n");
 				scn = new Scanner(System.in);
 				title = scn.nextLine();
+				System.out.print("Creating Home Page");
+			    Thread.sleep(1000);System.out.print(" . ");Thread.sleep(1000);System.out.print(". ");Thread.sleep(1000);System.out.print(". \n\n");Thread.sleep(1000);
 				newPage.makePage("Index", null, title);
 				
-				System.out.println("Creating Blog Content Page...\n");
-				newPage.makePage("Blog", null, title);
+				System.out.print("Creating Archive Page");
+				newPage.makePage("Archive", null, title);
+			    Thread.sleep(1000);System.out.print(" . ");Thread.sleep(1000);System.out.print(". ");Thread.sleep(1000);System.out.print(". \n\n");Thread.sleep(1000);
+
 				
 				
 			}

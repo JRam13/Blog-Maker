@@ -26,6 +26,9 @@ public class PageFactory {
       else if(pageType.equalsIgnoreCase("Blog")){
           return new BlogPostHTML(post, title);
        }
+      else if(pageType.equalsIgnoreCase("Archive")){
+          return new ArchiveHTML(post, title);
+       }
       return null;
    }
    

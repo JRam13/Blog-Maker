@@ -18,7 +18,9 @@ public class UserInterface {
 	    System.out.println("===========================================\n");
 		
 		//check to see if framework html files exists
-	    System.out.println("Checking for pages ...\n");
+	    System.out.print("Checking for pages");
+	    //add cool effect
+	    Thread.sleep(1000);System.out.print(" . ");Thread.sleep(1000);System.out.print(". ");Thread.sleep(1000);System.out.print(". \n\n");Thread.sleep(1000);
 		siteExists = doesSiteExist();
 		
 		//if files don't exist, ask user to create site pages
@@ -39,7 +41,7 @@ public class UserInterface {
 	
 	private static boolean doesSiteExist() {
 		File f = new File("html/index.html");
-		if(f.exists()) { return false;}
+		if(f.exists()) { System.out.println("Pages Not Found. Build Your Site First.\n"); return false;}
 		return true;
 	}
 }
