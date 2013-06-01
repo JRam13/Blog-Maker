@@ -7,7 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 //============================================================
-//This is a helper class that writes html files to the disk
+//This is a helper class that writes html files to the disk.
+//This could be a Page Factory Method, however, for the sake
+//of readability I made it its own class.
 //============================================================
 public class PageWriter {
 
@@ -22,6 +24,8 @@ public class PageWriter {
 			br.write(header);
 			br.newLine();
 			br.write(body);
+			br.newLine();
+			br.write(footer);
 			br.newLine();
 			br.close();
 			

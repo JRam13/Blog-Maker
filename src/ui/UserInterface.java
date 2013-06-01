@@ -39,7 +39,7 @@ public class UserInterface {
 	
 	private static boolean doesSiteExist() {
 		File f = new File("html/index.html");
-		if(!f.exists()) { return false;}
+		if(f.exists()) { return false;}
 		return true;
 	}
 }

@@ -2,6 +2,13 @@ package pageBuilder;
 
 import posts.Post;
 
+//=============================================================================
+//GoF Factory definition:
+//The intent of Factory Method is "Define an interface for creating an object, 
+//but let subclasses decide which class to instantiate. Factory Method lets a 
+//class defer instantiation to subclasses."
+//=============================================================================
+
 //==================================================================
 // Factory to generate object of concrete class based on user input.
 //==================================================================

@@ -14,9 +14,8 @@ public interface Page {
 	// == Interface for Page
 	// ===============================================
 	
-	abstract void makeHeader(String blogTitle);
-	abstract void makeBody(String bodyTitle);
+	abstract void makeHeader();
+	abstract void makeBody();
 	abstract void makeFooter();
-	abstract void applyStyle();
 
 }

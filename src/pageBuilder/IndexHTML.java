@@ -30,9 +30,9 @@ public class IndexHTML implements Page {
 	public IndexHTML(Post newPost, String newTitle) {
 		this.post = newPost;
 		this.title = newTitle;
-		makeHeader(title);
-		makeBody(title);
-		writeFile();
+		makeHeader();
+		makeBody();
+		makeFooter();
 		fw = new PageWriter(headerHTML, bodyHTML, footerHTML, fileName);
 	}
 
@@ -40,12 +40,12 @@ public class IndexHTML implements Page {
 	//Class Methods
 	//============================================================
 	@Override
-	public void makeHeader(String blogTitle) {
+	public void makeHeader() {
 		headerHTML = 
 				"<!DOCTYPE HTML>\n" +
 				"<head>\n" +
 				"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />\n" +
-				"<title>"+blogTitle+"</title>\n" +
+				"<title>"+title+"</title>\n" +
 				"<script type='text/javascript' src='js/jquery-1.8.3.js'></script>\n" +
 				"<script type='text/javascript' src='js/karma.js'></script>\n" +
 				"<link href='"+css+"' rel='stylesheet' type='text/css' />\n" +
@@ -55,7 +55,7 @@ public class IndexHTML implements Page {
 	}
 
 	@Override
-	public void makeBody(String bodyTitle) {
+	public void makeBody() {
 		
 		bodyHTML = "<body>\n"+
 				"<div id='wrapper'>\n"+
@@ -116,14 +116,16 @@ public class IndexHTML implements Page {
 				
 				"</div><!-- end content -->\n" +
 				"<div id='sidebar' class='sidebar_blog'>\n" +
-				"<div class='sidebar-widget'>\n" +
+				"<div class='sidebar-widget'>\n\n\n" +
+				
+				"<!-- ***************** - START Side Archive - ***************** -->\n" +
 				"<h3>Archives</h3>\n" +
 				"<ul>\n" +
-				"<li><a href='template-blog.html#' title=''>May 2011</a></li>\n" +
-				"<li><a href='template-blog.html#' title=''>April 2011</a></li>\n" +
-				"<li><a href='template-blog.html#' title=''>March 2011</a></li>\n" +
+				"<li>No Archives</li>\n" +
 				"</ul>\n" +
-				"</div>" +
+				"</div>\n\n\n" +
+				
+				"<!-- ***************** - END Side Archive - ***************** -->\n" +
 				"<h3>Social Networks</h3>\n" +
 				"<ul class='social_icons'>\n" +
 				"<li><a href='#' class='rss'>rss</a></li>\n" +
@@ -140,22 +142,46 @@ public class IndexHTML implements Page {
 				"</ul>\n" +
 				"</div><!-- end sidebar -->\n" +
 				"</div><!-- end main-holder -->\n" +
-				"</div><!-- main-area -->\n";
+				"</div><!-- main-area -->\n\n\n";
 	}
 
 	@Override
 	public void makeFooter() {
-		
-	}
-
-	@Override
-	public void applyStyle() {
-		
-	}
-	
-	private void writeFile() {
-		// TODO Auto-generated method stub
-		
+		footerHTML = 
+				"<!-- ***************** - Top Footer - ***************** -->\n" +
+				"<div id='footer'>\n" +
+				"<div class='footer-area'>\n" +
+				"<div class='footer-wrapper'>\n" +
+				"<div class='footer-holder'>\n\n" +
+				
+				"</div><!-- footer-holder -->\n" +
+				"</div><!-- end footer-wrapper -->\n" +
+				"</div><!-- end footer-area -->\n" +
+				"</div><!-- end footer -->\n" +
+				"<!-- /***************** - END Top Footer Area - ***************** --> \n\n\n" +
+				
+				"<!-- /***************** - Bottom Footer - ***************** -->\n" +
+				"<div id='footer_bottom'>\n" +
+				"<div class='info'>\n" +
+				"<div id='foot_left'><p>Copyright &copy; 2013 "+title+". All rights reserved.</p>\n" +
+				" </div><!-- end foot_left -->\n" +
+				"<div id='foot_right'>\n" +
+				"<div class='top-footer'><a href='template-blog.html#' class='link-top'>top</a></div>\n" +
+				"<ul>\n" +
+				"<li><a href='index.html'>Home</a></li>\n" +
+				" </ul>\n" +
+				"</div><!-- end foot_right -->\n" +
+				"</div><!-- end info -->\n" +
+				"</div><!-- end footer_bottom -->\n" +
+				"<!-- /***************** - END Bottom Footer - ***************** --> \n\n\n" +
+				
+				"</div><!-- end main -->\n" +
+				"</div><!-- end wrapper -->\n" +
+				"<script type='text/javascript' src='js/jquery.cycle.all.min.js'></script>\n" +
+				"<script type='text/javascript' src='js/jquery-1-slider.js'></script>\n" +
+				"<script type='text/javascript' src='js/testimonial-slider.js'></script>\n" +
+				"</body>\n" +
+				"</html>\n";
 	}
 
 	//=============================================================
