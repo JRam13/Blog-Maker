@@ -73,8 +73,7 @@ public class ArchiveHTML extends Page {
 				"<div id='content' class='content_blog'>\n\n\n" +
 				
 				"<!-- ***************** - START Post - ***************** -->\n" +
-				"<h1>No Posts Yet</h1>\n" +
-
+				getArchive() +
 				"<!-- ***************** - END Post - ***************** -->\n\n\n" +
 				
 				"</div><!-- end content -->\n" +
@@ -102,5 +101,22 @@ public class ArchiveHTML extends Page {
 				"</div><!-- end main-holder -->\n" +
 				"</div><!-- main-area -->\n\n\n";
 	}
+	
+	private String getArchive() {
+		if(posts == null || posts.size() == 0){
+			return 
+					"<li>No Posts Yet</li>\n";
+		}
+		else{
+			String archive = "<h3>> June <</h3>\n <ul>\n";
+			for (Post post : posts) {
+				archive +=
+						"<li><a href='blogs/"+post.getPostTitle()+post.getDate().substring(11, 19)+".html'>"
+						+ post.getDate()+" - "+post.getPostTitle()+ " - by: " + post.getAuthor()+"</a></li>";
+			}
+			return archive;		
+		}
+	}
+	
 
 }

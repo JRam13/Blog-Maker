@@ -22,7 +22,7 @@ public class UserInterface {
 		//check to see if framework html files exists
 	    System.out.print("Checking for pages");
 	    //add cool animating effect
-	    //Thread.sleep(1000);System.out.print(" . ");Thread.sleep(1000);System.out.print(". ");Thread.sleep(1000);System.out.print(". \n\n");Thread.sleep(1000);
+	    Thread.sleep(1000);System.out.print(" . ");Thread.sleep(1000);System.out.print(". ");Thread.sleep(1000);System.out.print(". \n\n");Thread.sleep(1000);
 		siteExists = doesSiteExist();
 		
 		while(option != 12){
@@ -63,6 +63,7 @@ public class UserInterface {
 		        
 		        //give user option to add, edit, or delete a post
 		        System.out.println("1) Add Post");
+		        System.out.println("3) Delete Post");
 		        System.out.println("12) Exit \n");
 		        
 		        Scanner scn = new Scanner(System.in); 
@@ -76,6 +77,9 @@ public class UserInterface {
 				
 				if(option == 1){
 					PageFacade.addPost();
+				}
+				if(option == 3){
+					PageFacade.deletePost();
 				}
 				else if(option == 12){
 					System.out.println("GoodBye.");

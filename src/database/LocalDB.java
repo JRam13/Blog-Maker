@@ -26,9 +26,24 @@ public class LocalDB {
 		appendToDocument(post);
 		
 		//write to database and return all posts
-		writeToDB();
+		if(post != null){
+			writeToDB();
+		}
 		return allPosts;
 		
+	}
+	
+	public static ArrayList<Post> deleteFromDatabase(Post post) {
+		//get the current state of database
+		getCurrentState();
+		
+		//delete from database
+		delete(post);
+		
+		//update the database
+		writeToDB();
+		
+		return allPosts;
 	}
 
 	private static void getCurrentState() {
@@ -55,7 +70,21 @@ public class LocalDB {
 
 	private static void appendToDocument(Post post) {
 		PostIterator iterator = new PostIterator(currentState);
-		allPosts = iterator.add(post);
+		if(post == null){
+			allPosts = currentState;
+		}
+		else{
+			allPosts = iterator.add(post);
+		}
+		
+	}
+	
+	private static void delete(Post post) {
+		PostIterator iterator = new PostIterator(currentState);
+		while(iterator.hasNext())
+			if(iterator.next().getDate().equals(post.getDate())){
+				allPosts = iterator.delete();
+			}
 		
 	}
 	

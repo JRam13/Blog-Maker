@@ -92,7 +92,7 @@ public class IndexHTML extends Page {
 				"<div class='sidebar-widget'>\n\n\n" +
 				
 				"<!-- ***************** - START Side Archive - ***************** -->\n" +
-				getSideArachive() +
+				getSideArchive() +
 				"</ul>\n" +
 				"</div>\n\n\n"+
 				"<!-- ***************** - END Side Archive - ***************** -->\n" +
@@ -126,9 +126,9 @@ public class IndexHTML extends Page {
 		}
 		else{
 			String allPosts = "<h1>Recent Blog Posts</h1>\n <hr /><br />";
-			int topFive = 0;
+			int mostRecent = 0;
 			for (Post post : posts) {
-				if(topFive < 3){
+				if(mostRecent < 3){
 					allPosts += 
 							"<div class='blog_wrap'>\n" +
 							"<div class='post_title'>\n" +
@@ -152,16 +152,16 @@ public class IndexHTML extends Page {
 							"</div><!-- end post_footer -->\n" +
 							"</div><!-- end blog_wrap -->\n";
 				}
-				topFive ++;
+				mostRecent ++;
 			}
 			return allPosts;
 		}
 	}
 	
-	private String getSideArachive() {
+	private String getSideArchive() {
 		if(posts == null || posts.size() == 0){
 			return 
-					"<li>No Archive</li>\n";
+					"<li>No Posts</li>\n";
 		}
 		else{
 			String sideArchive = "<h3>Archive</h3>\n <ul>\n";

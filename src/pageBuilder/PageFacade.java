@@ -29,7 +29,7 @@ public class PageFacade {
 
 	public static void addPost() {
 		/*
-		 * First, we create the single post in which the user creates. Then, that post will be transferred into the database
+		 * First, create the single post object in which the user creates. Then, that post will be transferred into the database
 		 * where the returning object will consist of all the posts that exist on that database. This way, the html page
 		 * can be created by iterating through each post.
 		 */
@@ -39,5 +39,24 @@ public class PageFacade {
 		allPosts = post.makePost();
 		newPage.makePage("Index", allPosts);
 		newPage.makePage("Blog", allPosts);
+		newPage.makePage("Archive", allPosts);
+	}
+
+	public static void deletePost() {
+		/*
+		 * In this method, first grab a post object that the user wants to delete. Then, 
+		 * return the modified aggregate post list. 
+		 * The post.deletePost() calls the Post class and executes these two things.
+		 */
+		post = new Post();
+		allPosts = post.deletePost();
+		if(allPosts.isEmpty()) { 
+			newPage.makePage("Index", allPosts);
+			newPage.makePage("Archive", allPosts);
+		}
+		else{
+			newPage.makePage("Blog", allPosts);
+		}
+		
 	}
 }

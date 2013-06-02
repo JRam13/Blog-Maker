@@ -64,6 +64,17 @@ public class Post {
 		
 	}
 	
+	public ArrayList<Post> deletePost() {
+		//fetch all posts from database
+		posts = LocalDB.addToDatabase(null);
+		
+		//list all posts, ask user which to delete
+		Post currentPostToDelete = postToDelete();
+		posts = LocalDB.deleteFromDatabase(currentPostToDelete);
+		
+		return posts;
+	}
+
 	//============================================================
 	//Getters & Setters
 	//============================================================
@@ -99,6 +110,37 @@ public class Post {
 		this.author = author;
 	}
 	
-	
+	//============================================================
+	//Helper Methods
+	//============================================================
+	private Post postToDelete() {
+		int optionB = 0;
+		System.out.println("Listing Posts");
+        System.out.println("--------------------------");
+        
+        int count = 1;
+        for (Post post : posts) {
+            System.out.println(count + ") " + post.getPostTitle() + " - " + post.getDate().substring(11, 19) );
+            count++;
+        }
+        System.out.println();
+    	
+    	Scanner scn = new Scanner(System.in); 
+    	try {
+			optionB = scn.nextInt();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.err.println("Invalid Selection. Exiting.");
+		}
+    	
+    	count = 1;
+    	for (Post post : posts) {
+            if(count == optionB){
+            	return post;
+            }
+            count++;
+        }
+    	return null;
+	}
 
 }

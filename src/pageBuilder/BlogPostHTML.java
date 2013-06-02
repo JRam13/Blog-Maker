@@ -128,7 +128,7 @@ public class BlogPostHTML extends Page {
 		"<br class='clear' />\n" +
 		
 		"<div class='related_posts'>\n" +
-		"<h4>Related Posts</h4>\n" +
+		"<h4>Comments</h4>\n" +
 		"<ul class='list'>\n" +
 		"<li>Feature Coming Soon</li>\n" +
 		" </ul>\n" +
