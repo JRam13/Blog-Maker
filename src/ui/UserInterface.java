@@ -79,15 +79,18 @@ public class UserInterface {
 				if(option == 1){
 					PageFacade.addPost();
 				}
-				if(option == 2){
+				else if(option == 2){
 					PageFacade.editPost();
 				}
-				if(option == 3){
+				else if(option == 3){
 					PageFacade.deletePost();
 				}
 				else if(option == 12){
 					System.out.println("GoodBye.");
 					System.exit(1);
+				}
+				else{
+					System.err.println("Please select a valid option 2 ");
 				}
 			}
 		}
