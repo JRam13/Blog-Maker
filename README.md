@@ -11,7 +11,7 @@ Layered Architechture
 -PageBuiler : Layer which builds html pages. Needs a Post object (Post could be null)
 	
      • PageFacade - Class which helps provide the client with a simple interface to a complex subsystem. 
-     Public methods include add / edit / delete posts to pages.
+     Public methods include add / edit / delete posts to the different pages.
 
      • Page / PageFactory - The html pages. All pages include header(), body()(abstract), and footer(). 
      PageFactory creates home, archive, and blog content pages.
