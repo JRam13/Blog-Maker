@@ -69,8 +69,32 @@ public class Post {
 		posts = LocalDB.addToDatabase(null);
 		
 		//list all posts, ask user which to delete
-		Post currentPostToDelete = postToDelete();
+		Post currentPostToDelete = postToSelect();
 		posts = LocalDB.deleteFromDatabase(currentPostToDelete);
+		
+		return posts;
+	}
+	
+	public ArrayList<Post> editPost() {
+		//fetch all posts from database
+		posts = LocalDB.addToDatabase(null);
+		
+		//list all posts, ask user which to delete
+		Post currentPostToEdit = postToSelect();
+		
+		//ask user for modified info
+		//get title
+		System.out.println("What is the new title of your post?");
+		Scanner scn = new Scanner(System.in);
+		currentPostToEdit.setPostTitle(scn.nextLine());
+		if(currentPostToEdit.getPostTitle().isEmpty()) { setPostTitle("(blank)"); }
+		
+		//get post content
+		System.out.println("Start typing your post content. \n");
+		currentPostToEdit.setContent(scn.nextLine());
+		if(currentPostToEdit.getContent().isEmpty()) { setContent("(no content)"); }
+		
+		posts = LocalDB.editFromDatabase(currentPostToEdit);
 		
 		return posts;
 	}
@@ -113,7 +137,7 @@ public class Post {
 	//============================================================
 	//Helper Methods
 	//============================================================
-	private Post postToDelete() {
+	private Post postToSelect() {
 		int optionB = 0;
 		System.out.println("Listing Posts");
         System.out.println("--------------------------");
@@ -130,7 +154,8 @@ public class Post {
 			optionB = scn.nextInt();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.err.println("Invalid Selection. Exiting.");
+			System.err.println("Invalid Selection.");
+			postToSelect();
 		}
     	
     	count = 1;

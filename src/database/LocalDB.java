@@ -45,6 +45,19 @@ public class LocalDB {
 		
 		return allPosts;
 	}
+	
+	public static ArrayList<Post> editFromDatabase(Post post) {
+		//get the current state of database
+				getCurrentState();
+				
+				//delete from database
+				edit(post);
+				
+				//update the database
+				writeToDB();
+				
+				return allPosts;
+	}
 
 	private static void getCurrentState() {
 		//this method grabs the current state of the database, before modifying.
@@ -84,6 +97,15 @@ public class LocalDB {
 		while(iterator.hasNext())
 			if(iterator.next().getDate().equals(post.getDate())){
 				allPosts = iterator.delete();
+			}
+		
+	}
+	
+	private static void edit(Post post) {
+		PostIterator iterator = new PostIterator(currentState);
+		while(iterator.hasNext())
+			if(iterator.next().getDate().equals(post.getDate())){
+				allPosts = iterator.edit(post);
 			}
 		
 	}

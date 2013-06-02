@@ -41,7 +41,7 @@ public class UserInterface {
 				try {
 					option = scn.nextInt();
 				} catch (Exception e) {
-					System.out.println("Please choose a valid option");
+					System.out.println("Please choose a valid option 1 ");
 				}
 				
 				if(option == 1){
@@ -53,7 +53,7 @@ public class UserInterface {
 					System.exit(1);
 				}
 				else{
-					System.err.println("Please select a valid option");
+					System.err.println("Please select a valid option 2 ");
 				}
 			}
 			else{
@@ -63,6 +63,7 @@ public class UserInterface {
 		        
 		        //give user option to add, edit, or delete a post
 		        System.out.println("1) Add Post");
+		        System.out.println("2) Edit Post");
 		        System.out.println("3) Delete Post");
 		        System.out.println("12) Exit \n");
 		        
@@ -72,11 +73,14 @@ public class UserInterface {
 				try {
 					option = scn.nextInt();
 				} catch (Exception e) {
-					System.out.println("Please choose a valid option");
+					System.out.println("Please choose a valid option 3");
 				}
 				
 				if(option == 1){
 					PageFacade.addPost();
+				}
+				if(option == 2){
+					PageFacade.editPost();
 				}
 				if(option == 3){
 					PageFacade.deletePost();
@@ -85,15 +89,12 @@ public class UserInterface {
 					System.out.println("GoodBye.");
 					System.exit(1);
 				}
-				else{
-					System.err.println("Please select a valid option");
-				}
 			}
 		}
 	}
 
 	//============================================================
-	//Class Methods
+	//Helper Methods
 	//============================================================
 	
 	private static boolean doesSiteExist() {

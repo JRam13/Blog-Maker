@@ -44,8 +44,13 @@ public class PostIterator implements Iterator{
 	}
 
 	public ArrayList<Post> delete() {
-		System.out.println(index);
 		postList.remove(index - 1);
+		return postList;
+	}
+
+	public ArrayList<Post> edit(Post post) {
+		postList.remove(index - 1);
+		postList.add(index - 1, post);
 		return postList;
 	}
 

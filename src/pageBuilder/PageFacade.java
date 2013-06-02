@@ -55,7 +55,25 @@ public class PageFacade {
 			newPage.makePage("Archive", allPosts);
 		}
 		else{
+			newPage.makePage("Index", allPosts);
 			newPage.makePage("Blog", allPosts);
+			newPage.makePage("Archive", allPosts);
+			
+		}
+		
+	}
+
+	public static void editPost() {
+		post = new Post();
+		allPosts = post.editPost();
+		if(allPosts.isEmpty()) { 
+			newPage.makePage("Index", allPosts);
+			newPage.makePage("Archive", allPosts);
+		}
+		else{
+			newPage.makePage("Index", allPosts);
+			newPage.makePage("Blog", allPosts);
+			newPage.makePage("Archive", allPosts);
 		}
 		
 	}
