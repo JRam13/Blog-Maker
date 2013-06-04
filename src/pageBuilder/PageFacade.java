@@ -2,6 +2,7 @@ package pageBuilder;
 
 import java.util.ArrayList;
 import posts.Post;
+import posts.PostInterface;
 
 //================================================================
 //UI Page Facade. This helps provide simple interface to a complex 
@@ -12,7 +13,7 @@ import posts.Post;
 public class PageFacade {
 	static PageFactory newPage = new PageFactory();
 	static int option;
-	static Post post;
+	static PostInterface post;
 	static ArrayList<Post> allPosts = new ArrayList<Post>();
 	
 	public static void createAllPages() throws Exception{

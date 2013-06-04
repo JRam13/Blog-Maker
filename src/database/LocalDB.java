@@ -14,11 +14,11 @@ import posts.Post;
 //This is our local database object. The objective here is to store 
 //=================================================================
 
-public class LocalDB {
+public class LocalDB implements DatabaseInterface {
 	static ArrayList<Post> currentState;
 	static ArrayList<Post> allPosts = new ArrayList<Post>();
 
-	public static ArrayList<Post> addToDatabase(Post post) { //append post to database
+	public ArrayList<Post> addToDatabase(Post post) { //append post to database
 		//get current state of databse
 		getCurrentState();
 		
@@ -33,7 +33,7 @@ public class LocalDB {
 		
 	}
 	
-	public static ArrayList<Post> deleteFromDatabase(Post post) {
+	public ArrayList<Post> deleteFromDatabase(Post post) {
 		//get the current state of database
 		getCurrentState();
 		
@@ -46,7 +46,7 @@ public class LocalDB {
 		return allPosts;
 	}
 	
-	public static ArrayList<Post> editFromDatabase(Post post) {
+	public ArrayList<Post> editFromDatabase(Post post) {
 		//get the current state of database
 				getCurrentState();
 				

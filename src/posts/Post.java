@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import database.LocalDB;
 
-public class Post {
+public class Post implements PostInterface {
 	//============================================================
 	//Class Variables
 	//============================================================
@@ -15,6 +15,7 @@ public class Post {
 	private String content;
 	private String date;
 	ArrayList<Post> posts;
+	LocalDB db = new LocalDB();
 
 	//============================================================
 	//Constructors
@@ -32,6 +33,10 @@ public class Post {
 	//============================================================
 	//Class Methods
 	//============================================================
+	/* (non-Javadoc)
+	 * @see posts.PostInterface#makePost()
+	 */
+	@Override
 	public ArrayList<Post> makePost() {
 		//get post info
 		//get title
@@ -58,26 +63,34 @@ public class Post {
 		System.out.println(strDate);
 		
 		//add post to database
-		posts = LocalDB.addToDatabase(this);
+		posts = db.addToDatabase(this);
 		
 		return posts;
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see posts.PostInterface#deletePost()
+	 */
+	@Override
 	public ArrayList<Post> deletePost() {
 		//fetch all posts from database
-		posts = LocalDB.addToDatabase(null);
+		posts = db.addToDatabase(null);
 		
 		//list all posts, ask user which to delete
 		Post currentPostToDelete = postToSelect();
-		posts = LocalDB.deleteFromDatabase(currentPostToDelete);
+		posts = db.deleteFromDatabase(currentPostToDelete);
 		
 		return posts;
 	}
 	
+	/* (non-Javadoc)
+	 * @see posts.PostInterface#editPost()
+	 */
+	@Override
 	public ArrayList<Post> editPost() {
 		//fetch all posts from database
-		posts = LocalDB.addToDatabase(null);
+		posts = db.addToDatabase(null);
 		
 		//list all posts, ask user which to delete
 		Post currentPostToEdit = postToSelect();
@@ -94,7 +107,7 @@ public class Post {
 		currentPostToEdit.setContent(scn.nextLine());
 		if(currentPostToEdit.getContent().isEmpty()) { setContent("(no content)"); }
 		
-		posts = LocalDB.editFromDatabase(currentPostToEdit);
+		posts = db.editFromDatabase(currentPostToEdit);
 		
 		return posts;
 	}
